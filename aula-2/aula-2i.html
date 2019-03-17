@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Aprendendo VueJs</title>
+</head>
+<body>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	<div id="app">
+		<h1>Lista de tarefas</h1>
+		<ul>
+			<li v-for="tarefa in tarefas">
+				<span v-text="tarefa.title"></span>
+				<small v-if="tarefa.completed">Tarefa completa</small>
+				<small v-else>Tarefa incompleta</small>
+			</li>
+		</ul>
+	</div>
+
+	<script>
+		var app = new Vue({
+  			el: '#app',
+  			data: {
+    			tarefas: [
+    				{ title: 'Aprender PHP', completed: true },
+    				{ title: 'Aprender Laravel', completed: true },
+    				{ title: 'Aprender VueJS', completed: false }
+    			]
+  			}
+		})
+	</script>
+
+</body>
+</html>

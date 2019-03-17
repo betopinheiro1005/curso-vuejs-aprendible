@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Aprendendo VueJs</title>
+</head>
+<body>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	<div id="app">
+		<h1 v-show="message.length > 2">Olá <span v-text="message"></span></h1>
+		<input type="text" v-model="message" />
+	</div>
+
+	<script>
+		var app = new Vue({
+  			el: '#app',
+  			data: {
+    		message: 'Aprendible'
+  			}
+		})
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<title>Aprendendo VueJs</title>
+	<style>
+		.glyphicon-check, .glyphicon-unchecked{
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+		<div id="app">
+
+			<h1>Lista de tarefas</h1>
+			<ul>
+				<li v-for="task in tasks">
+					<span v-text="task.title"></span>
+					<span v-on:click="task.completed = false" v-if="task.completed" class="glyphicon glyphicon-check"></span>
+					<span v-on:click="task.completed = true" v-else class="glyphicon glyphicon-unchecked"></span>
+				</li>
+				<li class="form-inline">
+					<input v-on:keyup.enter="addTask" type="text" class="form-control" v-model="newTask">
+				</li>
+			</ul>
+
+		</div>
+
+		<script>
+			var app = new Vue({
+	  			el: '#app',
+	  			data: {
+	  				newTask: "",
+	    			tasks: [
+	    				{ title: 'Aprender PHP', completed: true },
+	    				{ title: 'Aprender Laravel', completed: true },
+	    				{ title: 'Aprender VueJS', completed: false }
+	    			],
+	  			},
+	   			methods: {
+	   				addTask: function(){
+	   					if(this.newTask <= 1) return alert('A tarefa não pode estar vazia!');
+	   					this.tasks.push({
+	   							title: this.newTask,
+	   							completed: false
+	   					});
+	   					this.newTask = "";
+	   				}
+	   			}
+			});
+		</script>
+
+	</div>
+
+</body>
+</html>
